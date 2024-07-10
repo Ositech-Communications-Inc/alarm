@@ -328,6 +328,8 @@ public class SwiftAlarmPlugin: NSObject, FlutterPlugin {
     public func setVolume(volume: Float, enable: Bool) {
         DispatchQueue.main.async {
             let volumeView = MPVolumeView()
+            volumeView.showsVolumeSlider = false
+                    
 
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
                 if let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
