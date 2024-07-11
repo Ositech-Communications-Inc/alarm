@@ -332,8 +332,7 @@ public class SwiftAlarmPlugin: NSObject, FlutterPlugin {
             
                     )
             volumeView.showsVolumeSlider = false
-             // disable showing volume interface
-            volumeView.showsRouteButton = false
+            
                     
 
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
