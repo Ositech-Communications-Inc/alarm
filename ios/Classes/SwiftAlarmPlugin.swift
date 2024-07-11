@@ -327,64 +327,22 @@ public class SwiftAlarmPlugin: NSObject, FlutterPlugin {
 
     public func setVolume(volume: Float, enable: Bool) {
         DispatchQueue.main.async {
-//            let volumeView = MPVolumeView()
-//            volumeView.showsVolumeSlider = false
-//             // disable showing volume interface
-//            volumeView.showsRouteButton = false
-//            UIApplication.shared.windows.first?.addSubview(volumeView)
-//
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-//                if let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
-//                    self.previousVolume = enable ? slider.value : nil
-//                    slider.value = volume
-//                }
-//                volumeView.removeFromSuperview()
-//            }
-/// increase volume without displaying volume interface
-            let audioSession = AVAudioSession.sharedInstance()
-            do {
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                try audioSession.setCategory(.playback, mode: .default, options: [])
-                try audioSession.setActive(true)
-                let volumeView = MPVolumeView()
-                volumeView.showsVolumeSlider = false
-                UIApplication.shared.windows.first?.addSubview(volumeView)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
-                    if let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
-                        self.previousVolume = enable ? slider.value : nil
-                        slider.value = volume
-                    }
-                    volumeView.removeFromSuperview()
+            let volumeView = MPVolumeView(
+                frame: CGRect(x: 0, y: 0, width: 0, height: 0)
+            
+                    )
+            volumeView.showsVolumeSlider = false
+             // disable showing volume interface
+            volumeView.showsRouteButton = false
+                    
+
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.1) {
+                if let slider = volumeView.subviews.first(where: { $0 is UISlider }) as? UISlider {
+                    self.previousVolume = enable ? slider.value : nil
+                    slider.value = volume
                 }
-            } catch {
-                NSLog("SwiftAlarmPlugin: Error setting volume: \(error.localizedDescription)")
+                volumeView.removeFromSuperview()
             }
-            
-            
         }
     }
 
